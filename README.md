@@ -47,9 +47,6 @@ and select the language.
 ### Sublime Text
 Tabulation set as 4, with dark default theme.
 
-## ACHAR
-Contain the characters of the ascii art.
-
 # Page File
 Text limited as 441 chars. Thta will not crash, but thats too many for the default console size.
 
