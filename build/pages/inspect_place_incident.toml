@@ -1,0 +1,6 @@
+[info]
+title = "Inpect The Incident Place"
+text = " You inspect the place of the incident "
+
+[buttons]
+btn_next = ["What's append next ?", "cbmd;", "none;"]

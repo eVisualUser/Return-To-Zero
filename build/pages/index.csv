@@ -1,0 +1,10 @@
+./pages/menu.toml;000;
+./pages/central_hall.toml;008;
+./pages/cantine.toml;009;
+./pages/comet_collision.toml;010;
+./pages/inspect_place_incident.toml;013;
+./pages/return_own_ship.toml;014;
+./pages/waiting.toml;015;
+./pages/captain.toml;016;
+./pages/radio_op_speak.toml;017;
+./pages/goto_own_ship.toml;018;

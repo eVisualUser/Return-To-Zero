@@ -1,0 +1,9 @@
+[info]
+title = "Central Hall"
+text = " $Hello$Hello$Hello$Hello "
+
+[buttons]
+# cantine capitain waiting
+btn_cantine = ["Cantine", "goto.009;", "none;"]
+btn_waiting = ["waiting", "goto.015;", "none;"]
+btn_capitain = ["Capitaine", "goto.016;", "none;"]

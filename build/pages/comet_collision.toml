@@ -1,0 +1,8 @@
+[info]
+title = "Comet Collision !"
+text = " Comet Collision !!! "
+
+[buttons]
+btn_back_hall = ["Go Back To the central hall !", "goto.011;", "none;"]
+btn_insepct = ["Inpect the place of the incident.", "goto.013;", "none;"]
+btn_return_own = ["Return To Your Own Ship.", "goto.014;", "none;"]

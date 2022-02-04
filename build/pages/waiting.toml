@@ -1,0 +1,7 @@
+[info]
+title = "Waiting"
+text = " You Wait.. "
+
+[buttons]
+btn_speak_radio = ["Speak to radio operator.", "goto.017;", "none;"]
+btn_goto_own_ship = ["Go to own ship.", "goto.010;", "none;"]
