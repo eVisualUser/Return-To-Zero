@@ -1,0 +1,10 @@
+# Game
+../code/main.c
+
+# Framework
+../code/data.c
+../code/ui.c
+../code/toml.c
+../code/text.c
+../code/cmd.c
+../code/player.c
