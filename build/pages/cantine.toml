@@ -1,7 +1,0 @@
-[info]
-title = "Cantine"
-text = " Welcome in the cantine ! "
-
-[buttons]
-btn_continue = ["Take the food", "cantoth;goto.010;", "none;"] # Give Food
-btn_continue_doc = ["Help neighbor son", "cantdoc;goto.010;", "doc;"] # Help The Neighbor

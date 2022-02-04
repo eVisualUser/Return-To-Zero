@@ -1,6 +1,0 @@
-[info]
-title = "Sample Page"
-text = "This is a sample file.$Here you will able to describe your custome page."
-
-[buttons]
-btn_sample = ["Sample Button", "quit;", "none;"]

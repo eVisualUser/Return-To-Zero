@@ -1,6 +1,0 @@
-[info]
-title = "FAILED"
-text = " The goto command have failed ! "
-
-[buttons]
-btn_exit = ["EXIT", "quit;", "none;"]

@@ -1,6 +1,0 @@
-[info]
-titlte = "The Captain"
-text = " You go to the captain... "
-
-[buttons]
-btn_next = ["What append next ?!", "cggi;goto.010;", "none;"]

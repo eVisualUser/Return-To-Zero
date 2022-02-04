@@ -1,7 +1,0 @@
-[info]
-title = "Main Menu"
-text = "Welcome to Return To Zero.$When you use you hit for the first time a button,$you will need to press 5/6 times."
-
-[buttons]
-btn_play = ["PLAY", "goto.008;", "none;"]
-btn_lsave = ["Load last game (work in progress)", "none;", "none;"]

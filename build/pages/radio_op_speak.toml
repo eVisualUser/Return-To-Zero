@@ -1,6 +1,0 @@
-[info]
-title = "Speak to radio operator"
-text = " You speak to the radio operator. "
-
-[buttons]
-btn_next = ["What append next ?!", "cbr;goto.010;", "none;"]

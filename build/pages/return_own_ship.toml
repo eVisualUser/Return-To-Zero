@@ -1,6 +1,0 @@
-[info]
-title = "Return To Your Own Ship"
-text = " You return to our ship. And Get Out Of there "
-
-[buttons]
-btn_next = ["What Append Next ?!", "none;", "none;"]
