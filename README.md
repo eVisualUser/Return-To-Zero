@@ -20,28 +20,6 @@
 You must install powershell,
 with chocolatey and the pacakge llvm.
 
-## Game Timeline
-
-### Main Menu
-The user can load a save, exit the game,
-or start a new game,
-and select the language.
-
-#### Buttons
-- Play
-- Saves
-- Exit
-
-### Game
-- Print achar file.
-- Print page Information.
-- Print player info.
-- Print buttons.
-
-### Final
-- Print achar file.
-- Ask to restart.
-
 ## IDE
 
 ### Sublime Text
