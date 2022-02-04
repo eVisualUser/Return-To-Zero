@@ -1,0 +1,8 @@
+[info]
+title = "Game Book Sample"
+# A space at the beginning and end is needed, that will be fixed later.
+text = " This is a Game Book sample !$ The dollar char is reserved for line jump. "
+
+[buttons]
+btn_ok = ["Ok", "goto.000;", "none;"]
+btn_quit = ["Quit", "quit;", "none;"]
