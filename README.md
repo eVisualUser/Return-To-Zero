@@ -14,7 +14,6 @@
 ✅ Buttons. <br />
 ✅ Buttons Actions. <br />
 ✅️ Buttons Conditions. <br />
-❗ Installer <br />
 
 ## Compilation
 You must install powershell,
