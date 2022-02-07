@@ -73,11 +73,6 @@ Each data must end by a ';'.
 - geo # Must be a geologist
 - eng # Must be an enginer
 
-# files.txt
-List all files,
-if one missing, it will be download from the cloud.
-Link: REPLACE THIS BY THE LINK
-
 # Code Rules
 
 Variables: snake_case
