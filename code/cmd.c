@@ -1,5 +1,10 @@
 #include "cmd.h"
 
+int gen_new_luck()
+{
+	return rand() % 6 + 1;
+}
+
 void execute_cmd(char* cmd, Page* page)
 {
 	if(str_match(str_crop(cmd), "debug"))
@@ -18,7 +23,7 @@ void execute_cmd(char* cmd, Page* page)
 	}
 }
 
-bool test_cond(char* cond, Player player)
+bool test_cond(char* cond, Player player, int luck)
 {
 	char* ccond = str_crop(cond);
 
@@ -44,7 +49,6 @@ bool test_cond(char* cond, Player player)
 
 char** extract_args(char* cmd, int* count)
 {
-	
 	char** result = malloc(10*10);
 	
 	char* buffer = malloc(100);

@@ -61,6 +61,8 @@ int main(int argc, char** argv) {
 	{
 		/* Update */
 
+		int luck_val = gen_new_luck();
+
 		#if BUTTONS
 		Button* btns = malloc(sizeof(Button)*(page.btns_count+1));
 		#endif // BUTTONS		
@@ -115,7 +117,7 @@ int main(int argc, char** argv) {
 		excepted_buttons = 0;
 		for(int i = 0; i <= page.btns_count; i++)
 		{
-			if(test_cond(page.btns[i].condition, player))
+			if(test_cond(page.btns[i].condition, player, luck_val))
 			{
 				btns[i] = make_button(page.btns[i].text, page.btns[i].action, page.btns[i].condition);
 			}
@@ -159,7 +161,6 @@ int main(int argc, char** argv) {
 
 			for(int i = 0; i <= args_count; i++)
 			{
-				printf("%s", extracted_args[i]);
 				execute_cmd(extracted_args[i], &page);
 			}
 		}
