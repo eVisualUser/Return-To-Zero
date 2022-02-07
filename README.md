@@ -55,22 +55,7 @@ Place an empty space at the first char and last.
 The ; make seperate the actions or conditions.
 Each data must end by a ';'.
 
-## List
-
-### Action
-- goto # Load another page
-- none # No action
-- cantdoc # Save than you saved the neightbor son
-- cantoth # Give the food in the inventory
-- cbmd # Crushed by a metal bar (<=5/6 == death)
-- cggi # Captain give a good image of you +1 sociability
-- cbr # Crashed by a rock (<5/6=death)
-
-### Condition
-- none # No Condition
-- doc # Must be a doctor
-- geo # Must be a geologist
-- eng # Must be an enginer
+Take a look in the wiki for tha actions and conditions.
 
 # Code Rules
 
