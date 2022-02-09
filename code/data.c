@@ -57,16 +57,16 @@ void set_uconfig_from_file(Uconfig* ucfg, char* file)
 {
 	FILE* fp;
 	fopen_s(&fp, file,"r");
-
+	
 	if(fp == NULL)
 	{
 		printf("Missing \"input\" file !");
 		exit(-1);
 	}
-
+	
 	const size_t line_size = 100;
 	char* line = malloc(line_size);
-
+	
 	int j = 0;
 	while (fgets(line, line_size, fp) != NULL)  {
 	   for(int i = 0; line[i] != '\0' ;i++)

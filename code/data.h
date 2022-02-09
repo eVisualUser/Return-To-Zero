@@ -63,6 +63,7 @@ const char* getfield(char* line, int num);
 // Use a .toml file to contain page info
 void load_page_toml(Page* page, char* file);
 
+// Read the index.csv to get the first page defined
 char* get_first_page();
 
 // init a page struct

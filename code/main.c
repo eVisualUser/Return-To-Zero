@@ -161,7 +161,7 @@ int main(int argc, char** argv) {
 
 			for(int i = 0; i <= args_count; i++)
 			{
-				execute_cmd(extracted_args[i], &page);
+				execute_cmd(extracted_args[i], &page, &player);
 			}
 		}
 	}
