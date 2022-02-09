@@ -1,7 +1,6 @@
 #pragma once
 
 #include "player.h"
-#include "data.h"
 
 #define INTER_ARG ';'
 
@@ -14,11 +13,14 @@
 #include <stdbool.h>
 #include <malloc.h>
 #include <string.h>
-#include <time.h>
+#include <windows.h>
+
+// Return true if two char* is equal until a '\0' is find
+bool str_match(char* a, char* b);
 
 // Execute a command
 // Called at the end of the loop, if the OK button is pressed
-void execute_cmd(char* cmd, Page* page);
+void execute_cmd(char* cmd, Page* page, Player* player);
 
 // Return true if the condition is valid
 // Called at the button creation
@@ -29,9 +31,6 @@ char** extract_args(char* cmd, int* count);
 
 // Return a char* resized
 char* str_crop(char* base);
-
-// Return true if two char* is equal until a '\0' is find
-bool str_match(char* a, char* b);
 
 // Set the next page load by the games
 void goto_cmd(char* cmd, Page* page);
