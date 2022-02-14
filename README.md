@@ -33,6 +33,7 @@ It's used to load a page without load every pages.
 Be careful with this file, that can crash the game.
 
 ## Example
+```
 [info]
 
 title = "the title"
@@ -42,9 +43,8 @@ text = " the text / question "
 
 [buttons]
 
-btn_test = ["text", "action", "cond"]
-
-
+btn_test = ["text", "action;", "cond;"]
+```
 ## Warning
 The '$' specified a line jump,
 Place an empty space at the first char and last.
