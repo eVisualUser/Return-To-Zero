@@ -1,19 +1,5 @@
-# GameBook
-
-## Current State
-
-✅ Finish <br />
-🔜 Close to be finish <br />
-🏗️ Work In Progress <br />
-❗ Not Began <br />
-
-✅ Load .toml file. <br />
-✅ Print the title. <br />
-✅ Print the text.  <br />
-✅ User Inputs handler. <br />
-✅ Buttons. <br />
-✅ Buttons Actions. <br />
-✅️ Buttons Conditions. <br />
+# Return To Zero
+You can download the full game, in the releases.
 
 ## Compilation Dependencies
 You must install powershell,
