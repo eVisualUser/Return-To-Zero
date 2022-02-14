@@ -1,9 +1,9 @@
 # Return To Zero
-You can download the full game, in the releases.
+You can download the full game, in the [releases](https://github.com/eVisualUser/Return-To-Zero/releases).
 
 ## Compilation Dependencies
-You must install powershell,
-with chocolatey and the pacakge llvm.
+You must install [owershell](https://docs.microsoft.com/fr-fr/powershell/scripting/install/installing-powershell?view=powershell-7.2),
+with [chocolatey](https://community.chocolatey.org/) and the pacakge [llvm](https://community.chocolatey.org/packages/llvm).
 
 # Page File
 Text limited as 441 chars. Thta will not crash, but thats too many for the default console size.
