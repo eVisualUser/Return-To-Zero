@@ -26,6 +26,9 @@ typedef struct {
 	int spanner;
 	int book;
 
+	// Logs
+	bool son_saved;
+
 } Player;
 
 Player create_player();

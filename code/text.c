@@ -14,7 +14,7 @@ void print_fmt_text(char* text, CharStyle cstyle, int x, int y, int wx_mx, int w
 	move_cursor(x, y);
 
 	int log_x = x;
-	for(int i = 0; i < array_len; i++)
+	for(int i = 0; i <= array_len; i++)
 	{
 		switch(text[i])
 		{

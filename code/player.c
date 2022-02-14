@@ -20,5 +20,8 @@ Player create_player()
 	result.spanner = 0;
 	result.book = 0;
 
+	// Logs
+	result.son_saved = false;
+
 	return result;
 }

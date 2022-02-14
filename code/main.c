@@ -23,6 +23,13 @@ int main(int argc, char** argv) {
 	title_style.bg_color = COLOR_RED_BG;
 	title_style.positive = true;
 
+	CharStyle title_style_active;
+	title_style_active.bold = true;
+	title_style_active.underline = false;
+	title_style_active.color = COLOR_YELLOW_FG;
+	title_style_active.bg_color = COLOR_RED_BG;
+	title_style_active.positive = true;
+
 	CharStyle page_title_style;
 	page_title_style.bold = true;
 	page_title_style.underline = true;
@@ -36,13 +43,6 @@ int main(int argc, char** argv) {
 	page_text_style.color = COLOR_GREEN_FG;
 	page_text_style.bg_color = COLOR_BLACK_BG;
 	page_text_style.positive = true;
-
-	CharStyle input_style;
-	input_style.bold = true;
-	input_style.underline = false;
-	input_style.color = COLOR_LIGHT_MAGENTA_FG;
-	input_style.bg_color = COLOR_BLACK_BG;
-	input_style.positive = true;
 
 	Player player;
 	player.job = Doctor;
@@ -76,33 +76,39 @@ int main(int argc, char** argv) {
 		button_index = clamp_int(button_index, 0, page.btns_count-excepted_buttons);
 		#endif // BUTTONS
 		/* PRINT */
-		system("cls");
+		#ifdef _WIN32
+			system("cls");
+		#elif
+			system("cls");
+		#else
+			system("clear");
+		#endif
+
+		// Border
+		print_borders(title_style);
 
 		// Print Inputs
 		#if AINPUTS
 
 		char* text_input_up = malloc(10);
-		sprintf(text_input_up, "UP %c", ucfg.up);
+		sprintf(text_input_up, "UP [%c]", ucfg.up);
 		char* text_input_down = malloc(10);
-		sprintf(text_input_down, "Down %c", ucfg.down);
+		sprintf(text_input_down, "Down [%c]", ucfg.down);
 		char* text_input_ok = malloc(10);
-		sprintf(text_input_ok, "OK %c", ucfg.ok);
+		sprintf(text_input_ok, "OK [%c]", ucfg.ok);
 
-		move_cursor(0, 2);
-		print(text_input_up, input_style);
-		move_cursor(0, 3);
-		print(text_input_down, input_style);
-		move_cursor(0, 4);
-		print(text_input_ok, input_style);
+		move_cursor(0, WINDOW_SIZE_Y);
+		print(text_input_up, uip.up ? title_style_active : title_style);
+		move_cursor(WINDOW_SIZE_X/7, WINDOW_SIZE_Y);
+		print(text_input_down, uip.down ? title_style_active : title_style);
+		move_cursor(WINDOW_SIZE_X/4, WINDOW_SIZE_Y);
+		print(text_input_ok, uip.ok ? title_style_active : title_style);
 
 		free(text_input_up);
 		free(text_input_down);
 		free(text_input_ok);
 
 		#endif // ATEXT
-
-		// Border
-		print_borders(title_style);
 
 		#if ATITLE
 		// Title
@@ -117,7 +123,7 @@ int main(int argc, char** argv) {
 		excepted_buttons = 0;
 		for(int i = 0; i <= page.btns_count; i++)
 		{
-			if(test_cond(page.btns[i].condition, player, luck_val))
+			if(test_cond(page.btns[i].condition, &player, luck_val))
 			{
 				btns[i] = make_button(page.btns[i].text, page.btns[i].action, page.btns[i].condition);
 			}
@@ -125,7 +131,7 @@ int main(int argc, char** argv) {
 				excepted_buttons++;
 		}
 		
-		print_buttons(btns, page.btns_count-excepted_buttons, title_style, 20, button_index);
+		print_buttons(btns, page.btns_count-excepted_buttons, title_style, WINDOW_SIZE_Y/2.5, button_index);
 		#endif // BUTTONS
 
 		#if ATEXT
@@ -139,13 +145,13 @@ int main(int argc, char** argv) {
 
 		#if ATITLE
 		// Page Title
-		move_cursor((int)WINDOW_SIZE_X/2-(int)sizeof(page.title)/2, 10);
+		move_cursor((int)WINDOW_SIZE_X/2-(int)sizeof(page.title)/2, WINDOW_SIZE_Y/10);
 		print(page.title, page_title_style);
 		#endif // ATITLE
 
 		#if ATEXT
 		// Page Text
-		print_fmt_text(page.text, page_text_style, WINDOW_SIZE_X/3-(int)sizeof(page.text)/2, WINDOW_SIZE_Y/4, WINDOW_SIZE_X, WINDOW_SIZE_Y);
+		print_fmt_text(page.text, page_text_style, WINDOW_SIZE_X/3-(int)sizeof(page.text)/2, WINDOW_SIZE_Y/8, WINDOW_SIZE_X, WINDOW_SIZE_Y);
 		#endif // ATEXT
 
 		/* INPUT */
@@ -156,14 +162,9 @@ int main(int argc, char** argv) {
 		// When a button is activated
 		if(uip.ok)
 		{
-			int args_count = 0;
-			char** extracted_args = extract_args(btns[button_index].action, &args_count);
-
-			for(int i = 0; i <= args_count; i++)
-			{
-				execute_cmd(extracted_args[i], &page, &player);
-			}
+			execute_cmd(btns[button_index].action, &page, &player);
 		}
+
 	}
 
 	return EXIT_SUCCESS;

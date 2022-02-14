@@ -163,28 +163,38 @@ void load_page_toml(Page* buffer, char* file)
 	for(int i = 0; done == false;i++)
 	{
 		const char* btn_key = toml_key_in(buttons, i);
-		if(!btn_key) 
+		if(!btn_key)
 		{
 			break;
 		}
 
 		toml_array_t* btn = toml_array_in(buttons, btn_key);
-		if(!btn) 
+		if(!btn)
 		{
 			break;
 		}
+
 		else {
 			toml_datum_t btn_text = toml_string_at(btn, 0);
 			if(!btn_text.ok)
+			{
+				break;
 				printf("Missing text for button");
+			}
 
 			toml_datum_t btn_act = toml_string_at(btn, 1);
 			if(!btn_text.ok)
+			{
+				break;
 				printf("Missing action for button");
+			}
 
 			toml_datum_t btn_cond = toml_string_at(btn, 2);
 			if(!btn_text.ok)
+			{
+				break;
 				printf("Missing condition for button");
+			}
 			
 			PageButton pb;
 			pb.text = (char*)btn_text.u.s;
@@ -245,7 +255,7 @@ char* get_first_page()
         break;
     }
 
-    return cropper(path);
+    return path;
 }
 
 char* cropper(char* base)

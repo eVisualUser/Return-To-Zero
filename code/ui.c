@@ -32,9 +32,9 @@ void print_art(char* achar, int x, int y, int fg, int bg)
 		printf("%s not found", achar);
 		exit(-1);
 	}
-
+	
 	printf("\033[%im\033[%im", fg, bg);
-
+	
 	int buffer_lenght = 255;
 	char* buffer = malloc(buffer_lenght);
 
