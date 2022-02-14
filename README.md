@@ -15,14 +15,9 @@
 ✅ Buttons Actions. <br />
 ✅️ Buttons Conditions. <br />
 
-## Compilation
+## Compilation Dependencies
 You must install powershell,
 with chocolatey and the pacakge llvm.
-
-## IDE
-
-### Sublime Text
-Tabulation set as 4, with dark default theme.
 
 # Page File
 Text limited as 441 chars. Thta will not crash, but thats too many for the default console size.
@@ -53,9 +48,4 @@ The '$' is used for go to the next line.
 The ; make seperate the actions or conditions.
 Each data must end by a ';'.
 
-Take a look in the wiki for tha actions and conditions.
-
-# Code Rules
-
-Variables: snake_case
-Structures && Enum: CamelCase
+Take a look in the wiki for the actions and conditions.
