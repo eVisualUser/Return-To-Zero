@@ -45,9 +45,7 @@ text = " the text / question "
 
 btn_test = ["text", "action;", "cond;"]
 ```
-## Warning
-The '$' specified a line jump,
-Place an empty space at the first char and last.
+The '$' is used for go to the next line. 
 
 ## Actions && Conditions && TextPage
 ## Format
