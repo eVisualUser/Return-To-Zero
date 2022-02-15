@@ -46,7 +46,7 @@
 
 #define IO_CHAR_SIZE 100
 
-#define WINDOW_SIZE_X 100
+#define WINDOW_SIZE_X 150
 #define WINDOW_SIZE_Y 50
 
 #define move_cursor(x,y) printf("\033[%d;%dH", (y), (x))

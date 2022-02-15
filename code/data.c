@@ -22,16 +22,16 @@ void free_page(Page* page)
 void update_user_buffer(Uinput* uip, Uconfig* ucfg)
 {
 	char buffer = _getch();
-
-	if(buffer == ucfg->right)
+	printf("%c", buffer);
+	if(buffer == ucfg->right || buffer == 'D')
 		uip->right = true;
-	else if(buffer == ucfg->left)
+	else if(buffer == ucfg->left || buffer == 'C')
 		uip->left = true;
-	else if(buffer == ucfg->up)
+	else if(buffer == ucfg->up || buffer == 'H')
 		uip->up = true;
-	else if(buffer == ucfg->down)
+	else if(buffer == ucfg->down || buffer == 'P')
 		uip->down = true;
-	else if(buffer == ucfg->ok)
+	else if(buffer == ucfg->ok || buffer == '\r')
 		uip->ok = true;
 	else if(buffer == ucfg->cancel)
 		uip->cancel = true;

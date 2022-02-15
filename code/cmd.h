@@ -8,7 +8,13 @@
 #include <stdbool.h>
 #include <malloc.h>
 #include <string.h>
-#include <conio.h>
+#ifdef _WIN32
+	#include <windows.h>
+#elif _WIN64
+	#include <windows.h>
+#else
+	#include <unistd.h>
+#endif
 
 // Return true if two char* is equal until a '\0' is find
 bool str_match(char* a, char* b);
@@ -19,7 +25,7 @@ void execute_cmd(char* cmd, Page* page, Player* player);
 
 // Return true if the condition is valid
 // Called at the button creation
-bool test_cond(char* cond, Player* player, int luck);
+bool test_cond(char* cond, Player player, int luck);
 
 // Seperate each args into an array
 char** extract_args(char* cmd, int* count);

@@ -44,8 +44,21 @@ int main(int argc, char** argv) {
 	page_text_style.bg_color = COLOR_BLACK_BG;
 	page_text_style.positive = true;
 
-	Player player;
-	player.job = Doctor;
+	Player player = {
+		.job = Doctor,
+		.food = 0,
+		.weight = 0,
+		.speed = 0,
+		.social = 0,
+		.syringe = 0,
+		.grapple_hook = 0,
+		.pickaxe = 0,
+		.carbon_boots = 0,
+		.flare = 0,
+		.spanner = 0,
+		.book = 0,
+		.son_saved = true,
+	};
 
 	#if BUTTONS
 		long excepted_buttons = 0;
@@ -123,7 +136,7 @@ int main(int argc, char** argv) {
 		excepted_buttons = 0;
 		for(int i = 0; i <= page.btns_count; i++)
 		{
-			if(test_cond(page.btns[i].condition, &player, luck_val))
+			if(test_cond(page.btns[i].condition, player, luck_val))
 			{
 				btns[i] = make_button(page.btns[i].text, page.btns[i].action, page.btns[i].condition);
 			}
@@ -151,7 +164,7 @@ int main(int argc, char** argv) {
 
 		#if ATEXT
 		// Page Text
-		print_fmt_text(page.text, page_text_style, WINDOW_SIZE_X/3-(int)sizeof(page.text)/2, WINDOW_SIZE_Y/8, WINDOW_SIZE_X, WINDOW_SIZE_Y);
+		print_fmt_text(page.text, page_text_style, WINDOW_SIZE_X/4-(int)sizeof(page.text)/2, WINDOW_SIZE_Y/7, WINDOW_SIZE_X, WINDOW_SIZE_Y);
 		#endif // ATEXT
 
 		/* INPUT */

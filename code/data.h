@@ -10,9 +10,11 @@
 #include "toml.h"
 
 #ifdef _WIN32
-#include <conio.h>
+	#include <windows.h>
+#elif _WIN64
+	#include <conio.h>
 #else
-#include <unistd.h>
+	#include <unistd.h>
 #endif
 
 #define PAGE_TITLE_LEN 100

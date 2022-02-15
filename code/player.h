@@ -3,13 +3,13 @@
 #include "data.h"
 
 typedef enum {
-	Doctor,
-	Engineer,
-	Geologist,
-} Speciality;
+	Doctor=0,
+	Mechanician=1,
+	Geologist=2,
+} Spec;
 
 typedef struct {
-	Speciality job;
+	int job;
 
 	// Stats
 	int food;
@@ -30,5 +30,3 @@ typedef struct {
 	bool son_saved;
 
 } Player;
-
-Player create_player();

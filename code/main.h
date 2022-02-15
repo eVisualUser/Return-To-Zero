@@ -5,16 +5,18 @@
 #include "ui.h"
 #include "text.h"
 #include "cmd.h"
+#include "player.h"
 
 #include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
 
 #ifdef _WIN32
-#include <Windows.h>
-#include <Winuser.h>
+	#include <windows.h>
+#elif _WIN32
+	#include <windows.h>
 #else
-#include <unistd.h>
+	#include <unistd.h>
 #endif
 
 #define DEFAULT_PAGE_PATH "pages/central_hall.toml"

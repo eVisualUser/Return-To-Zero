@@ -27,15 +27,15 @@ void execute_cmd(char* cmd, Page* page, Player* player)
 		}
 		else if(str_match(args[i], "doc"))
 		{
-			player->job = Doctor;
+			player->job = 0;
 		}
 		else if(str_match(args[i], "mec"))
 		{
-			player->job = Engineer;
+			player->job = 1;
 		}
 		else if(str_match(args[i], "geo"))
 		{
-			player->job = Geologist;
+			player->job = 2;
 		}
 		else if(str_match(args[i], "+food"))
 		{
@@ -97,7 +97,7 @@ void execute_cmd(char* cmd, Page* page, Player* player)
 	free(args);
 }
 
-bool test_cond(char* cond, Player* player, int luck)
+bool test_cond(char* cond, Player player, int luck)
 {
 	char* ccond = str_crop(cond);
 	
@@ -110,30 +110,30 @@ bool test_cond(char* cond, Player* player, int luck)
 		if(str_match(args[i], "none")) result = true;
 		else if(str_match(args[i], "doc")) 
 		{
-			if(player->job == Doctor) result = true;
+			if(player.job == Doctor) result = true;
 			else result = false;
 		}
 		else if(str_match(args[i], "!doc")) 
 		{
-			if(player->job == Doctor) result = false;
+			if(player.job == Doctor) result = false;
 		}
 		else if(str_match(args[i], "mec")) 
 		{
-			if(player->job == Engineer) result = true;
+			if(player.job == Mechanician) result = true;
 			else result = false;
 		}
 		else if(str_match(args[i], "!mec")) 
 		{
-			if(player->job == Engineer) result = false;
+			if(player.job == Mechanician) result = false;
 		}
 		else if(str_match(args[i], "geo")) 
 		{
-			if(player->job == Geologist) result = true;
+			if(player.job == Geologist) result = true;
 			else result = false;
 		}
 		else if(str_match(args[i], "geo")) 
 		{
-			if(player->job == Geologist) result = false;
+			if(player.job == Geologist) result = false;
 		}
 		else if(str_match(args[i], "luck_high"))
 		{
@@ -167,122 +167,122 @@ bool test_cond(char* cond, Player* player, int luck)
 		}
 		else if (str_match(args[i], "food"))
 		{
-			if (player->food > 0)
+			if (player.food > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!food"))
 		{
-			if (player->food == 0)
+			if (player.food == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "weight"))
 		{
-			if (player->weight > 0)
+			if (player.weight > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!weight"))
 		{
-			if(player->weight == 0)
+			if(player.weight == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "speed"))
 		{
-			if(player->speed > 0)
+			if(player.speed > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!speed"))
 		{
-			if(player->speed == 0)
+			if(player.speed == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "social"))
 		{
-			if(player->weight > 0)
+			if(player.weight > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!social"))
 		{
-			if(player->social == 0)
+			if(player.social == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "syringe"))
 		{
-			if(player->syringe > 0)
+			if(player.syringe > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!syringe"))
 		{
-			if(player->syringe == 0)
+			if(player.syringe == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "grapple_hook"))
 		{
-			if(player->grapple_hook > 0)
+			if(player.grapple_hook > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!grapple_hook"))
 		{
-			if(player->grapple_hook == 0)
+			if(player.grapple_hook == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "pickaxe"))
 		{
-			if(player->pickaxe > 0)
+			if(player.pickaxe > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!pickaxe"))
 		{
-			if(player->pickaxe == 0)
+			if(player.pickaxe == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "carbon_boots"))
 		{
-			if(player->carbon_boots > 0)
+			if(player.carbon_boots > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!carbon_boots"))
 		{
-			if(player->carbon_boots == 0)
+			if(player.carbon_boots == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "flare"))
 		{
-			if(player->flare > 0)
+			if(player.flare > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!flare"))
 		{
-			if(player->flare == 0)
+			if(player.flare == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "spanner"))
 		{
-			if(player->spanner > 0)
+			if(player.spanner > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!spanner"))
 		{
-			if(player->spanner == 0)
+			if(player.spanner == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "book"))
 		{
-			if(player->book > 0)
+			if(player.book > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!book"))
 		{
-			if(player->book == 0)
+			if(player.book == 0)
 				result = false;
 		}
 		else if(str_match(args[i], "son_saved"))
 		{
-			if(player->son_saved)
+			if(player.son_saved)
 				result = false;
 		}
 		else if(str_match(args[i], "!son_saved"))
 		{
-			if(!player->son_saved)
+			if(!player.son_saved)
 				result = false;
 		}
 	}
