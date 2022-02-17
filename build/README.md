@@ -2,17 +2,11 @@
 Here you will find the build.<br/>
 With the pages located in "/pages/"
 
-## The "input" file.
-Contain all user inputs settings.<br/>
-Take care of this file, because it is very strict.<br/>
+Each page must be indexed into "index.csv".
+Example of index:
+<code>
+my_page.toml;000;
+my_other_page.toml;001;
+</code>
 
-RIGHT d<br/>
-LEFT q<br/>
-UP z<br/>
-DOWN s<br/>
-OK e<br/>
-CANCEL c<br/>
-SAVE p<br/>
-EXIT x<br/>
-
-After this text everything else will not be read.
+The game will always start by the first line.
