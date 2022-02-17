@@ -1,6 +1,6 @@
 [info]
 title = "A page was not found"
-text = " Retry a download to correct it. "
+text = " Retry a download to correct it."
 
 [buttons]
 btn_quit = ["Quit", "quit;", "none;"]
