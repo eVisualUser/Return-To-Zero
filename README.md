@@ -7,4 +7,4 @@ with [chocolatey](https://community.chocolatey.org/) and the pacakge [llvm](http
 
 
 All informations about the code and using it,<br/>
-is define in the Wiki.
+is define in the [Wiki](https://github.com/eVisualUser/Return-To-Zero/wiki).
