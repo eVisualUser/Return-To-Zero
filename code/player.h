@@ -16,6 +16,9 @@ typedef struct {
 	int weight;
 	int speed;
 	int social;
+	int luck;
+	int hability;
+	int energy;
 
 	// Tools
 	int syringe;
@@ -24,9 +27,11 @@ typedef struct {
 	int carbon_boots;
 	int flare;
 	int spanner;
+	int binocular;
 	int book;
 
 	// Logs
 	bool son_saved;
+	bool talk_cap;
 
 } Player;

@@ -17,6 +17,27 @@ void execute_cmd(char* cmd, Page* page, Player* player)
 		{
 			goto_cmd(args[i], page);
 		}
+		else if (str_match(args[i], "reset"))
+		{
+			player->job = Doctor;
+			player->food = 0;
+			player->weight = gen_new_luck() + 2;
+			player->speed = gen_new_luck() + 4;
+			player->social = 2;
+			player->syringe = 0;
+			player->grapple_hook = 0;
+			player->pickaxe = 0;
+			player->carbon_boots = 0;
+			player->flare = 0;
+			player->spanner = 0;
+			player->book = 0;
+			player->son_saved = false;
+			player->hability = gen_new_luck() + 6;
+			player->luck = gen_new_luck() + 6;
+			player->energy = gen_new_luck() + gen_new_luck() + 10;
+			player->binocular = 0;
+			player->talk_cap = false;
+		}
 		else if (str_match(args[i], "quit"))
 		{
 			exit(0);
@@ -27,15 +48,15 @@ void execute_cmd(char* cmd, Page* page, Player* player)
 		}
 		else if(str_match(args[i], "doc"))
 		{
-			player->job = 0;
+			player->job = Doctor;
 		}
 		else if(str_match(args[i], "mec"))
 		{
-			player->job = 1;
+			player->job = Mechanician;
 		}
 		else if(str_match(args[i], "geo"))
 		{
-			player->job = 2;
+			player->job = Geologist;
 		}
 		else if(str_match(args[i], "+food"))
 		{
@@ -45,6 +66,22 @@ void execute_cmd(char* cmd, Page* page, Player* player)
 		{
 			player->food--;
 		}
+		else if(str_match(args[i], "+binocular"))
+		{
+			player->binocular++;
+		}
+		else if(str_match(args[i], "-binocular"))
+		{
+			player->binocular--;
+		}
+		else if(str_match(args[i], "+energy"))
+		{
+			player->energy++;
+		}
+		else if(str_match(args[i], "-energy"))
+		{
+			player->energy--;
+		}
 		else if(str_match(args[i], "+weight"))
 		{
 			player->weight++;
@@ -53,9 +90,33 @@ void execute_cmd(char* cmd, Page* page, Player* player)
 		{
 			player->weight--;
 		}
+		else if(str_match(args[i], "+speed"))
+		{
+			player->speed++;
+		}
 		else if(str_match(args[i], "-speed"))
 		{
 			player->speed--;
+		}
+		else if(str_match(args[i], "+luck"))
+		{
+			player->luck++;
+		}
+		else if(str_match(args[i], "-luck"))
+		{
+			player->luck--;
+		}
+		else if(str_match(args[i], "+hability"))
+		{
+			player->hability++;
+		}
+		else if(str_match(args[i], "-hability"))
+		{
+			player->hability--;
+		}
+		else if(str_match(args[i], "-weight"))
+		{
+			player->weight--;
 		}
 		else if(str_match(args[i], "+social"))
 		{
@@ -81,6 +142,14 @@ void execute_cmd(char* cmd, Page* page, Player* player)
 		{
 			player->spanner--;
 		}
+		else if(str_match(args[i], "+pickaxe"))
+		{
+			player->pickaxe++;
+		}
+		else if(str_match(args[i], "-pickaxe"))
+		{
+			player->pickaxe--;
+		}
 		else if(str_match(args[i], "+book"))
 		{
 			player->book++;
@@ -92,6 +161,10 @@ void execute_cmd(char* cmd, Page* page, Player* player)
 		else if(str_match(args[i], "son_saved"))
 		{
 			player->son_saved = true;
+		}
+		else if(str_match(args[i], "talk_cap"))
+		{
+			player->talk_cap = true;
 		}
 	}
 	free(args);
@@ -107,15 +180,17 @@ bool test_cond(char* cond, Player player, int luck)
 	char** args = extract_args(ccond, &count);
 	for(int i = 0; i < count; i++)
 	{
-		if(str_match(args[i], "none")) result = true;
-		else if(str_match(args[i], "doc")) 
+		if(str_match(args[i], "doc")) 
 		{
-			if(player.job == Doctor) result = true;
-			else result = false;
+			if(player.job == Doctor) {
+				result = true;
+			}
 		}
 		else if(str_match(args[i], "!doc")) 
 		{
-			if(player.job == Doctor) result = false;
+			if(player.job == Doctor) {
+				result = false;
+			}
 		}
 		else if(str_match(args[i], "mec")) 
 		{
@@ -131,7 +206,7 @@ bool test_cond(char* cond, Player player, int luck)
 			if(player.job == Geologist) result = true;
 			else result = false;
 		}
-		else if(str_match(args[i], "geo")) 
+		else if(str_match(args[i], "!geo")) 
 		{
 			if(player.job == Geologist) result = false;
 		}
@@ -139,10 +214,17 @@ bool test_cond(char* cond, Player player, int luck)
 		{
 			if (luck >= 5)
 				result = false;
+			else result = true;
 		}
 		else if(str_match(args[i], "luck_med"))
 		{
 			if (luck >= 3)
+				result = false;
+			else result = true;
+		}
+		else if (str_match(args[i], "!luck_med"))
+		{
+			if (luck < 3)
 				result = false;
 		}
 		else if (str_match(args[i], "luck_low"))
@@ -150,19 +232,44 @@ bool test_cond(char* cond, Player player, int luck)
 			if (luck >= 2)
 				result = false;
 		}
+		else if (str_match(args[i], "!luck_low"))
+		{
+			if (luck < 2)
+				result = false;
+		}
 		else if (str_match(args[i], "!luck_high"))
 		{
 			if (luck <= 5)
 				result = false;
 		}
-		else if (str_match(args[i], "!luck_med"))
+		else if (str_match(args[i], "luck"))
 		{
-			if (luck <= 3)
+			if (player.luck > 0)
 				result = false;
 		}
-		else if (str_match(args[i], "!luck_low"))
+		else if (str_match(args[i], "!luck"))
 		{
-			if (luck <= 2)
+			if (player.luck == 0)
+				result = false;
+		}
+		else if (str_match(args[i], "hability"))
+		{
+			if (player.hability > 0)
+				result = false;
+		}
+		else if (str_match(args[i], "!hability"))
+		{
+			if (player.hability == 0)
+				result = false;
+		}
+		else if (str_match(args[i], "binocular"))
+		{
+			if (player.binocular > 0)
+				result = false;
+		}
+		else if (str_match(args[i], "!binocular"))
+		{
+			if (player.binocular == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "food"))
@@ -195,6 +302,16 @@ bool test_cond(char* cond, Player player, int luck)
 			if(player.speed == 0)
 				result = false;
 		}
+		else if (str_match(args[i], "energy"))
+		{
+			if(player.energy > 0)
+				result = false;
+		}
+		else if (str_match(args[i], "!energy"))
+		{
+			if(player.energy == 0)
+				result = false;
+		}
 		else if (str_match(args[i], "social"))
 		{
 			if(player.weight > 0)
@@ -207,12 +324,12 @@ bool test_cond(char* cond, Player player, int luck)
 		}
 		else if (str_match(args[i], "syringe"))
 		{
-			if(player.syringe > 0)
+			if(player.syringe == 0)
 				result = false;
 		}
 		else if (str_match(args[i], "!syringe"))
 		{
-			if(player.syringe == 0)
+			if(player.syringe > 0)
 				result = false;
 		}
 		else if (str_match(args[i], "grapple_hook"))
@@ -283,6 +400,16 @@ bool test_cond(char* cond, Player player, int luck)
 		else if(str_match(args[i], "!son_saved"))
 		{
 			if(!player.son_saved)
+				result = false;
+		}
+		else if(str_match(args[i], "talk_cap"))
+		{
+			if(player.talk_cap)
+				result = false;
+		}
+		else if(str_match(args[i], "!talk_cap"))
+		{
+			if(!player.talk_cap)
 				result = false;
 		}
 	}

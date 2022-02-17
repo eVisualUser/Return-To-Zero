@@ -22,7 +22,7 @@ void free_page(Page* page)
 void update_user_buffer(Uinput* uip, Uconfig* ucfg)
 {
 	char buffer = _getch();
-	printf("%c", buffer);
+
 	if(buffer == ucfg->right || buffer == 'D')
 		uip->right = true;
 	else if(buffer == ucfg->left || buffer == 'C')
@@ -37,7 +37,7 @@ void update_user_buffer(Uinput* uip, Uconfig* ucfg)
 		uip->cancel = true;
 	else if(buffer == ucfg->save)
 		uip->save = true;
-	else if(buffer == ucfg->exit)
+	else if(buffer == ucfg->exit || buffer == '\033')
 		uip->exit = true;
 }
 
@@ -51,63 +51,6 @@ void reset_user_buffer(Uinput* uip)
 	uip->cancel = false;
 	uip->save = false;
 	uip->exit = false;
-}
-
-void set_uconfig_from_file(Uconfig* ucfg, char* file)
-{
-	FILE* fp;
-	fopen_s(&fp, file,"r");
-	
-	if(fp == NULL)
-	{
-		printf("Missing \"input\" file !");
-		exit(-1);
-	}
-	
-	const size_t line_size = 100;
-	char* line = malloc(line_size);
-	
-	int j = 0;
-	while (fgets(line, line_size, fp) != NULL)  {
-	   for(int i = 0; line[i] != '\0' ;i++)
-        {
-        	if(line[i] == ' ')
-        	{
-        		switch(j)
-        		{
-        			case 0:
-        				ucfg->right = line[i+1];
-        				break;
-        			case 1:
-        				ucfg->left = line[i+1];
-        				break;
-        			case 2:
-        				ucfg->up = line[i+1];
-        				break;
-        			case 3:
-        				ucfg->down = line[i+1];
-        				break;
-          			case 4:
-        				ucfg->ok = line[i+1];
-        				break;
-        			case 5:
-        				ucfg->cancel = line[i+1];
-        				break;
-        			case 6:
-        				ucfg->save = line[i+1];
-        				break;
-        			case 7:
-        				ucfg->exit = line[i+1];
-        			default:
-        				break;
-        		}
-        	}
-        }
-        j++; 
-	}
-
-	fclose(fp);
-	free(line);
 }
 
 void load_page_toml(Page* buffer, char* file)
@@ -287,11 +230,4 @@ const char* getfield(char* line, int num)
             return tok;
     }
     return NULL;
-}
-
-bool luck(int base)
-{
-	// Todo
-	printf("Luck fn not exist !");
-	return NULL;
 }
